@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import { ToastContainer } from "react-toastify";
+import ToastProvider from "@/components/ToastProvider";
+import Footer from "@/components/Footer";
 
 
 const notoSerifBengali = Noto_Serif_Bengali({
@@ -25,7 +27,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Header/>
+        
         {children}
+        <Footer/>
         <ToastContainer
   containerId="global-toast"
   position="top-right"
@@ -35,6 +39,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   pauseOnHover
   theme="colored"
 />
+<ToastProvider />
+
         
         </body>
     </html>

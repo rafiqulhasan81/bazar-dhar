@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function HeaderAuth() {
   const router = useRouter();
@@ -43,30 +44,38 @@ export default function HeaderAuth() {
   const user = session.user;
 
   // সাইন আউট
-  async function handleSignOut() {
-    if (isSigningOut) return;
+  
+async function handleSignOut() {
+  if (isSigningOut) return;
 
-    setIsSigningOut(true);
+  setIsSigningOut(true);
 
-    try {
-      const result = await authClient.signOut();
+  try {
+    const result = await authClient.signOut();
 
-      if (result.error) {
-        console.error("Sign out failed:", result.error.message);
-        return;
-      }
-
-      setIsOpen(false);
-
-      // সাইন আউটের পরে হোম পেজে নিয়ে যাবে
-      router.replace("/");
-      router.refresh();
-    } catch (error) {
-      console.error("Sign out error:", error);
-    } finally {
-      setIsSigningOut(false);
+    if (result.error) {
+      toast.error(
+        result.error.message ||
+          "লগআউট করা যায়নি। আবার চেষ্টা করুন।"
+      );
+      return;
     }
+
+    setIsOpen(false);
+    toast.success("সফলভাবে লগআউট হয়েছে!");
+
+    router.replace("/");
+    router.refresh();
+  } catch (error) {
+    console.error("Sign out error:", error);
+
+    toast.error(
+      "লগআউটের সময় সমস্যা হয়েছে। আবার চেষ্টা করুন।"
+    );
+  } finally {
+    setIsSigningOut(false);
   }
+}
 
   return (
     <div className="relative">

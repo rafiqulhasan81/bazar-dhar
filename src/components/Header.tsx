@@ -296,25 +296,7 @@ const Header = async () => {
                         </div>
                     </div>
 
-                    {/* Category Navigation */}
-                    {/* <nav
-                        aria-label="পণ্যের ক্যাটাগরি"
-                        className="mt-3 flex h-10 items-center gap-5 overflow-x-auto border-t border-gray-100 pt-2"
-                    >
-                        {categories.map((category) => (
-                            <Link
-                                key={category.id}
-                                href={`/category/${category.slug}`}
-                                className="flex shrink-0 items-center gap-1 whitespace-nowrap text-xs text-gray-700 transition-colors hover:text-green-600"
-                            >
-                                <span aria-hidden="true">
-                                    {category.icon}
-                                </span>
-
-                                <span>{category.nameBn}</span>
-                            </Link>
-                        ))}
-                    </nav> */}
+                    
                     <CategoryNavigation categories={categories} />
                 </div>
             </header>
