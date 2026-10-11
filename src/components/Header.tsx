@@ -222,6 +222,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { connection } from "next/server";
+import CategoryNavigation from "@/components/CategoryNavigation";
 
 import PriceTicker from "./priceTicker";
 import HeaderAuth from "@/components/HeaderAuth";
@@ -296,7 +297,7 @@ const Header = async () => {
                     </div>
 
                     {/* Category Navigation */}
-                    <nav
+                    {/* <nav
                         aria-label="পণ্যের ক্যাটাগরি"
                         className="mt-3 flex h-10 items-center gap-5 overflow-x-auto border-t border-gray-100 pt-2"
                     >
@@ -313,7 +314,8 @@ const Header = async () => {
                                 <span>{category.nameBn}</span>
                             </Link>
                         ))}
-                    </nav>
+                    </nav> */}
+                    <CategoryNavigation categories={categories} />
                 </div>
             </header>
 
