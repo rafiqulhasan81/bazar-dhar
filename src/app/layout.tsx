@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { ToastContainer } from "react-toastify";
 import ToastProvider from "@/components/ToastProvider";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
 
 
 const notoSerifBengali = Noto_Serif_Bengali({
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${notoSerifBengali.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      {/* <body className="min-h-full flex flex-col">
         <Header/>
         
         {children}
@@ -42,7 +43,30 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 <ToastProvider />
 
         
-        </body>
+        </body> */}
+
+        <body className="flex min-h-screen flex-col">
+  <Suspense fallback={<div className="h-24" />}>
+    <Header />
+  </Suspense>
+
+  <main className="flex-1">
+    {children}
+  </main>
+
+  <Footer />
+
+  <ToastContainer
+  containerId="global-toast"
+  position="top-right"
+  autoClose={3500}
+  newestOnTop
+  closeOnClick
+  pauseOnHover
+  theme="colored"
+/>
+  <ToastProvider />
+</body>
     </html>
   );
 }

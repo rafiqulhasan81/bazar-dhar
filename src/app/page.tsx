@@ -3,6 +3,7 @@ import Link from "next/link";
 import AllProducts from "@/components/allproducts";
 import CategoryProducts from "@/components/CategoryProducts";
 import AuthProductLink from "@/components/AuthProductLink";
+import { Suspense } from "react";
 
 
 const API_URL =
@@ -211,7 +212,7 @@ function ProductCard({
   );
 }
 
-export default async function Home() {
+async function HomeContent() {
   let products: Product[] = [];
   let hasError = false;
 
@@ -347,7 +348,30 @@ export default async function Home() {
 />
 
       
-    </main>
+        </main>
   );
 }
 
+export default function HomePage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-[#f0f5f0]">
+          <div className="mx-auto max-w-4xl px-4 py-20 text-center">
+            <div className="mb-3 text-4xl">🛒</div>
+
+            <h2 className="text-lg font-bold text-[#27332b]">
+              বাজারদরের তথ্য লোড হচ্ছে...
+            </h2>
+
+            <p className="mt-2 text-sm text-[#778078]">
+              অনুগ্রহ করে একটু অপেক্ষা করুন।
+            </p>
+          </div>
+        </main>
+      }
+    >
+      <HomeContent />
+    </Suspense>
+  );
+}
