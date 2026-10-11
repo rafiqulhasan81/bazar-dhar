@@ -2,8 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-
+import AuthProductLink from "@/components/AuthProductLink";
 type Product = {
   id: number | string;
   slug: string;
@@ -71,11 +70,11 @@ function ProductCard({
   const badgeIcon = isDown ? "▼" : isUp ? "▲" : "—";
 
   return (
-    <Link
-      href={getProductHref(product)}
-      aria-label={`${product.nameBn} এর বিস্তারিত দেখুন`}
-      className="block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-    >
+  <AuthProductLink
+    href={getProductHref(product)}
+    aria-label={`${product.nameBn} এর বিস্তারিত দেখুন`}
+    className="block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+  >
       <article
         className={`h-full border border-[#dfe8e0] bg-[#fafcfb] transition-all hover:-translate-y-0.5 hover:border-[#b9cdbd] hover:shadow-md ${
           variant === "large"
@@ -178,7 +177,7 @@ function ProductCard({
           বিস্তারিত দেখুন →
         </p>
       </article>
-    </Link>
+   </AuthProductLink>
   );
 }
 

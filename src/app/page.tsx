@@ -187,6 +187,7 @@ import Herosec from "@/components/Herosec";
 import Link from "next/link";
 import AllProducts from "@/components/allproducts";
 import CategoryProducts from "@/components/CategoryProducts";
+import AuthProductLink from "@/components/AuthProductLink";
 
 
 const API_URL =
@@ -281,11 +282,11 @@ function ProductCard({
   const badgeIcon = isDown ? "▼" : isUp ? "▲" : "—";
 
   return (
-    <Link
-      href={getProductHref(product)}
-      aria-label={`${product.nameBn} এর বিস্তারিত দেখুন`}
-      className="block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-    >
+  <AuthProductLink
+    href={getProductHref(product)}
+    aria-label={`${product.nameBn} এর বিস্তারিত দেখুন`}
+    className="block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+  >
       <article
         className={`h-full border border-[#dfe8e0] bg-[#fafcfb] transition-all hover:-translate-y-0.5 hover:border-[#b9cdbd] hover:shadow-md ${
           variant === "large"
@@ -391,7 +392,7 @@ function ProductCard({
           বিস্তারিত দেখুন →
         </p>
       </article>
-    </Link>
+    </AuthProductLink>
   );
 }
 
