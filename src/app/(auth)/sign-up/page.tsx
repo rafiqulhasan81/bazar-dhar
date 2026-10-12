@@ -352,7 +352,7 @@ import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 type SocialProvider = "google" | "github";
 
@@ -455,22 +455,11 @@ const SignUpPage = () => {
         password,
       });
 
-      if (result.error) {
-        toast.error(
-          result.error.message ||
-            "অ্যাকাউন্ট তৈরি করা যায়নি।"
-        );
-        return;
-      }
-
-      // if (result.data) {
-      //   // অ্যাকাউন্ট তৈরি সফল
-      //   router.replace("/");
-      //   router.refresh();
-      // }
-
       if (result.data) {
   toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
+
+  // সাইন আপ ফর্মের সব ইনপুট খালি করা
+  form.reset();
 
   setTimeout(() => {
     router.replace("/");
@@ -497,14 +486,7 @@ const SignUpPage = () => {
 
   return (
     <main className="min-h-[calc(100vh-110px)] bg-[#f1f6f2] px-4 py-10 sm:py-12">
-      <ToastContainer
-        position="top-right"
-        autoClose={3500}
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-        theme="colored"
-      />
+      
 
       <section className="mx-auto flex w-full flex-col items-center">
         {/* Page Heading */}

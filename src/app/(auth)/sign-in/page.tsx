@@ -363,11 +363,17 @@ const SignInPage = () => {
       }
 
       if (result.data) {
-        toast.success("সফলভাবে সাইন ইন হয়েছে!");
+  toast.success("সফলভাবে সাইন ইন হয়েছে!");
 
-        router.push("/");
-        router.refresh();
-      } else {
+  form.reset();
+
+  setTimeout(() => {
+    router.push("/");
+    router.refresh();
+  }, 800);
+}
+      
+      else {
         toast.error(
           "সাইন ইন সম্পন্ন হয়েছে কি না নিশ্চিত করা যায়নি।"
         );

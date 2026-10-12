@@ -3,7 +3,6 @@ import {Noto_Serif_Bengali} from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ToastContainer } from "react-toastify";
 import ToastProvider from "@/components/ToastProvider";
 import Footer from "@/components/Footer";
 import { Suspense } from "react";
@@ -56,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
   <Footer />
 
-  <ToastContainer
+  {/* <ToastContainer
   containerId="global-toast"
   position="top-right"
   autoClose={3500}
@@ -64,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   closeOnClick
   pauseOnHover
   theme="colored"
-/>
+/> */}
   <ToastProvider />
 </body>
     </html>

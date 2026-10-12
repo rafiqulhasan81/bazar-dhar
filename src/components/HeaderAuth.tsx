@@ -62,10 +62,13 @@ async function handleSignOut() {
     }
 
     setIsOpen(false);
-    toast.success("সফলভাবে লগআউট হয়েছে!");
 
-    router.replace("/");
-    router.refresh();
+    toast.success("সফলভাবে সাইন আউট হয়েছে!");
+
+    setTimeout(() => {
+      router.replace("/");
+      router.refresh();
+    }, 800);
   } catch (error) {
     console.error("Sign out error:", error);
 
@@ -76,6 +79,7 @@ async function handleSignOut() {
     setIsSigningOut(false);
   }
 }
+
 
   return (
     <div className="relative">
