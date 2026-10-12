@@ -58,13 +58,13 @@ export default function ProfilePage() {
 
 toast.success("প্রোফাইল সফলভাবে আপডেট হয়েছে!", {
   containerId: "global-toast",
-  autoClose: 1000,
+  autoClose: 2000,
 });
 
 setTimeout(() => {
   router.replace("/");
   router.refresh();
-}, 1000);
+}, 2000);
     } catch (error) {
       console.error("Profile update error:", error);
 
@@ -95,12 +95,14 @@ setTimeout(() => {
         return;
       }
 
-      toast.success("সফলভাবে সাইন আউট হয়েছে!");
+      toast.success("সফলভাবে সাইন আউট হয়েছে!", {
+  autoClose: 2500,
+});
 
-      setTimeout(() => {
-        router.replace("/");
-        router.refresh();
-      }, 1200);
+setTimeout(() => {
+  router.replace("/");
+  router.refresh();
+}, 1500);
     } catch (error) {
       console.error("Sign out error:", error);
       toast.error("সাইন আউট করা যায়নি। আবার চেষ্টা করুন।");

@@ -4,6 +4,7 @@ import AllProducts from "@/components/allproducts";
 import CategoryProducts from "@/components/CategoryProducts";
 import AuthProductLink from "@/components/AuthProductLink";
 import { Suspense } from "react";
+import ToastTest from "@/components/ToastTest";
 
 
 const API_URL =
@@ -368,6 +369,7 @@ export default function HomePage() {
               অনুগ্রহ করে একটু অপেক্ষা করুন।
             </p>
           </div>
+          <ToastTest />
         </main>
       }
     >

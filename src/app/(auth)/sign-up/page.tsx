@@ -425,7 +425,9 @@ const SignUpPage = () => {
 
     // ফর্ম ভ্যালিডেশন
     if (!name) {
-      toast.error("আপনার নাম লিখুন।");
+      toast.error("আপনার নাম লিখুন।", {
+  containerId: "global-toast",
+});
       return;
     }
 
@@ -455,22 +457,23 @@ const SignUpPage = () => {
         password,
       });
 
-      if (result.data) {
-  toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
+      
+if (result.data) {
+  toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!", {
+  containerId: "global-toast",
+  autoClose: 2500,
+});
 
-  // সাইন আপ ফর্মের সব ইনপুট খালি করা
   form.reset();
 
   setTimeout(() => {
-    router.replace("/");
-    router.refresh();
-  }, 1000);
+    router.replace("/sign-in");
+  }, 1500);
+} else {
+  toast.error(
+    "অ্যাকাউন্ট তৈরি নিশ্চিত করা যায়নি।"
+  );
 }
-       else {
-        toast.error(
-          "অ্যাকাউন্ট তৈরি নিশ্চিত করা যায়নি।"
-        );
-      }
     } catch (error) {
       console.error("Sign-up error:", error);
 

@@ -54,17 +54,17 @@ async function handleSignOut() {
     const result = await authClient.signOut();
 
     if (result.error) {
-      toast.error(
-        result.error.message ||
-          "লগআউট করা যায়নি। আবার চেষ্টা করুন।"
-      );
+      toast.error("সাইন আউট করা যায়নি।", {
+  containerId: "global-toast",
+});
       return;
     }
 
     setIsOpen(false);
 
-    toast.success("সফলভাবে সাইন আউট হয়েছে!");
-
+    toast.success("সফলভাবে সাইন আউট করেছেন!", {
+  containerId: "global-toast",
+});
     setTimeout(() => {
       router.replace("/");
       router.refresh();

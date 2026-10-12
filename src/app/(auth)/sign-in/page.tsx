@@ -355,29 +355,28 @@ const SignInPage = () => {
       });
 
       if (result.error) {
-        toast.error(
-          result.error.message ||
-            "ইমেইল অথবা পাসওয়ার্ড সঠিক নয়।"
-        );
+        toast.error("ইমেইল অথবা পাসওয়ার্ড সঠিক নয়।", {
+  containerId: "global-toast",
+});
         return;
       }
 
       if (result.data) {
-  toast.success("সফলভাবে সাইন ইন হয়েছে!");
+  toast.success("সফলভাবে সাইন ইন করেছেন!", {
+  containerId: "global-toast",
+});
 
   form.reset();
 
   setTimeout(() => {
-    router.push("/");
+    router.replace("/");
     router.refresh();
-  }, 800);
+  }, 1500);
+} else {
+  toast.error(
+    "সাইন ইন সম্পন্ন হয়েছে কি না নিশ্চিত করা যায়নি।"
+  );
 }
-      
-      else {
-        toast.error(
-          "সাইন ইন সম্পন্ন হয়েছে কি না নিশ্চিত করা যায়নি।"
-        );
-      }
     } catch (error) {
       console.error("Sign-in error:", error);
 
